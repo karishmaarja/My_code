@@ -1,3 +1,5 @@
+# Neural Network using tensorflow
+
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets("/tmp/data/", one_hot = True)
@@ -11,6 +13,8 @@ batch_size = 100
 
 x = tf.placeholder('float', [None, 784])
 y = tf.placeholder('float')
+
+# Create Layers for Neural Networks
 
 def neural_network_model(data):
     hidden_1_layer = {'weights':tf.Variable(tf.random_normal([784, n_nodes_hl1])),
@@ -38,6 +42,8 @@ def neural_network_model(data):
     output = tf.matmul(l3,output_layer['weights']) + output_layer['biases']
 
     return output
+
+# Train the Neural Network
 
 def train_neural_network(x):
     prediction = neural_network_model(x)

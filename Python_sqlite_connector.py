@@ -1,9 +1,13 @@
+# create database in sqlite by accesing data from Json using sqlite3 connectors 
+
 import json
 import sqlite3
 
 
 conn = sqlite3.connect('rosterdb.sqlite')
 cur = conn.cursor()
+
+# Run queries using connector
 
 cur.executescript('''
 DROP TABLE IF EXISTS User;
@@ -44,6 +48,8 @@ for entry in json_data:
 	title = entry[1];
 	role = entry[2];
 	
+    # insert the values from Json to Sqlite tables
+    
 	print name, title, role
 	cur.execute('''INSERT OR IGNORE INTO User (name) 
         VALUES ( ? )''', ( name, ) )
