@@ -1,0 +1,61 @@
+<!Doctype html>
+<html>
+	<head>
+		<script language="javascript" src="angular.js"></script>
+		<link href="handling_events.css" rel="stylesheet"/>
+	</head>
+	<body>
+		
+		<div ng-app= "myModul" ng-controller= "myControlle">
+		
+			<div>
+				<table>
+					<thead>
+						<tr>
+							<th>TECHNOLOGY</th>
+							<th>LIKES</th>
+							<th>DISLIKES</th>
+							<th>LIKES/DISLIKES</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="technology in technologies">
+							<td>{{technology.name}}</td>
+							<td>{{technology.likes}}</td>
+							<td>{{technology.dislikes}}</td>
+							<td>
+							<input type="button" value="Like" ng-click="incrementlikes(technology)"/>
+							<input type="button" value="DisLike" ng-click="incrementdislikes(technology)"/>
+							</td>
+							
+						</tr>
+					</tbody>
+				</table>
+		    </div>	
+		</div></br>
+		
+		<script>
+			var myApp = angular.module("myModul", []);
+			myApp.controller("myControlle", function($scope){ 
+			var technologies = [
+				{name: "c#", likes:0, dislikes:0},
+				{name: "sql", likes:0, dislikes:0}, 
+				{name: "javascript", likes:0, dislikes:0}, 
+				{name: "JS", likes:0, dislikes:0}
+				];
+			
+			$scope.technologies = technologies;
+			$scope.incrementlikes = function (technolog){
+			technology.likes++;
+			}
+			$scope.incrementdislikes = function (technology){
+			technology.dislikes++;
+			}
+		
+			});
+			
+		</script>
+	
+	</body>
+
+</html>

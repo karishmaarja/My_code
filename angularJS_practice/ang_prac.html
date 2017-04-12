@@ -1,0 +1,81 @@
+<!Doctype html>
+<html >
+	<head>
+		<script language="javascript" src="angular.js"></script>
+	</head>
+	<body>
+		<div ng-app = "myModule" ng-controller = "myController">
+			NAME: <input type ="text" ng-model="greeting"/></br>
+			{{greeting}}</br>
+			<table>
+				<tr>
+					<td>
+						FIRSTNAME
+					</td>
+					<td>
+						<input type="text" ng-model="employee.firstName"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						LASTNAME
+					</td>
+					<td>
+						<input type="text" ng-model="employee.lastName"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						GENDER:
+					</td>
+					<td>
+						<input type="text" ng-model="employee.gender"/>
+					</td>
+				</tr>
+			</table>
+			</br>
+			<table>
+			<tr>
+				<td>
+					FirstName:
+				</td>
+				<td>
+					{{employee.firstName}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					LastName:
+				</td>
+				<td>
+					{{employee.lastName}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Gender:
+				</td>
+				<td>
+					{{employee.gender}}
+				</td>
+			</tr>
+			</table>
+			
+		</div>
+		<script>
+			var myApp = angular.module("myModule", []);
+			myApp.controller("myController", function($scope){
+			var employee = {
+				firstName: "karishma",
+				lastName: "Arja",
+				gender: "female",
+			};
+			$scope.employee = employee;
+			});
+		</script>
+	</body>
+</html>
+
+		
+		
+		

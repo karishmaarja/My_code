@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script language = "javascript" src = "angular.js"></script>
+	<link href="handling_events.css" rel="stylesheet"/>
+</head>
+
+<body>
+	<div ng-app ="myModule" ng-controller = "myController">
+		Search: <input type="text" placeholder= "search employee & salary" ng-model = "search"/> 
+		<br></br>
+		<table>
+			<thead>
+				<tr>
+					<th> Name </th>
+					<th>
+						Date of Birth </th>
+					<th>
+						Gender </th>
+					<th>
+						Salary </th>	
+				<tr>
+			<thead>
+			<tbody>
+				<tr ng-repeat = "employee in employees | filter: searchText">
+					<td> {{employee.name}} </td>
+					<td> {{employee.dateOfBirth| date:"dd/mm/yy"}} </td>
+					<td> {{employee.gender}} </td>
+					<td> {{employee.salary }} </td>
+				</tr>
+			<tbody>
+		</table>
+	<div>
+</body>
+
+<script>
+var app = angular.module("myModule", []);
+app.controller("myController", function($scope){
+	var employees = [
+	{name: "aarishmaarishma", dateOfBirth: new Date("november 23, 1980"), gender: "Male", salary: 85000.788},
+	{name: "barish", dateOfBirth: new Date("november 23, 1980"), gender: "Male", salary: 75000.788},
+	{name: "ma", dateOfBirth: new Date("november 23, 1980"), gender: "feMale", salary: 5500.788},
+	{name: "rishma", dateOfBirth: new Date("november 23, 1980"), gender: "Male", salary: 65000.788},
+	{name: "karishma", dateOfBirth: new Date("november 23, 1980"), gender: "Male", salary: 55000.788},
+	];
+	
+$scope.employees = employees;
+$scope.search = function(item)
+	{
+		if($scope.searchText == undefined)
+			{
+				return true;
+			}
+		else 
+			{
+				if (item.name.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1 ||
+						item.salary.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1)
+					{
+	
+						return true;
+					}
+			}
+	
+		return true;
+	
+	}
+
+
+});
+</script>

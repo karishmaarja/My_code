@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script language = "javascript" src = "angular.js"></script>
+	<link href="handling_events.css" rel="stylesheet"/>
+</head>
+
+<body>
+	<div ng-app ="myModule" ng-controller = "myController">
+		Search: <input type="text" placeholder= "search employee" ng-model = "searchText.name"/> <!-- searchText.city -->
+		<input type="text" placeholder= "search salary" ng-model = "searchText.salary"/>
+		<input type ="checkbox" ng-model = "exactMatch"/>Exact Match
+		<br></br>
+		<table>
+			<thead>
+				<tr>
+					<th> Name </th>
+					<th>
+						Date of Birth </th>
+					<th>
+						Gender </th>
+					<th>
+						Salary </th>	
+				<tr>
+			<thead>
+			<tbody>
+				<tr ng-repeat = "employee in employees | filter: searchText:exactMatch">
+					<td> {{employee.name}} </td>
+					<td> {{employee.dateOfBirth| date:"dd/mm/yy"}} </td>
+					<td> {{employee.gender}} </td>
+					<td> {{employee.salary }} </td>
+				</tr>
+			<tbody>
+		</table>
+	<div>
+</body>
+
+<script>
+var app = angular.module("myModule", []);
+app.controller("myController", function($scope){
+	var employees = [
+	{name: "aarishmaarishma", dateOfBirth: new Date("november 23, 1980"), gender: "Male", salary: 85000.788},
+	{name: "barish", dateOfBirth: new Date("november 23, 1980"), gender: "Male", salary: 75000.788},
+	{name: "ma", dateOfBirth: new Date("november 23, 1980"), gender: "Male", salary: 5500.788},
+	{name: "rishma", dateOfBirth: new Date("november 23, 1980"), gender: "Male", salary: 65000.788},
+	{name: "karishma", dateOfBirth: new Date("november 23, 1980"), gender: "Male", salary: 55000.788},
+	];
+	
+$scope.employees = employees;
+$scope.sortColumn = "name";
+
+
+});
+</script>

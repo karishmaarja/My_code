@@ -1,0 +1,51 @@
+<!Doctype html>
+<html>
+	<head>
+		<script language="javascript" src="angular.js"></script>
+	</head>
+	<body>
+		
+		<div ng-app= "myModul" ng-controller= "myControlle">
+		
+			<div>
+				<table>
+					<thead>
+						<tr>
+							<th>FIRSTNAME</th>
+							<th>LASTNAME</th>
+							<th>GENDER</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="employee in employees">
+							<td>{{employee.firstName}}</td>
+							<td>{{employee.lastName}}</td>
+							<td>{{employee.gender}}</td>
+							
+						</tr>
+					</tbody>
+				</table>
+		    </div>	
+		</div></br>
+		
+		<script>
+			var myApp = angular.module("myModul", []);
+			myApp.controller("myControlle", function($scope){ 
+			var employees = [
+				{firstName: "karishma", lastName: "arja", gender: "female"},
+				{firstName: "pavani", lastName: "peri", gender: "female"},
+				{firstName: "vineesha", lastName: "manam", gender: "female"},
+				{firstName: "sethan", lastName: "arja", gender: "male"},
+				{firstName: "gay3", lastName: "madamanchi", gender: "female"},
+				{firstName: "babth", lastName: "babth", gender: "male"}
+				];
+			
+			$scope.employees = employees;
+		
+			});
+			
+		</script>
+	
+	</body>
+
+</html>
